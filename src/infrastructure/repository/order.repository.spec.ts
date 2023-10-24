@@ -80,6 +80,31 @@ describe("Order repository test", () => {
     });
   });
 
+  it("should throw an error when update an orders", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("c1", "Customer 1");
+    customer.changeAddress(new Address(
+      "A st.",
+      1,
+      "60000-000",
+      "Fortaleza",
+    ));
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product("p1", "Product 1", 100);
+    await productRepository.create(product);
+
+    const orderRepository = new OrderRepository();
+    const orderItem = new OrderItem("i1", product.name, 1, product.price, product.id);
+    const order = new Order("o1", customer.id, [orderItem]);
+    await orderRepository.create(order);
+
+    expect(async () => {
+      await orderRepository.update(order);
+    }).rejects.toThrow("Not implemented");
+  });
+
   it("should find an order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("c1", "Customer 1");
