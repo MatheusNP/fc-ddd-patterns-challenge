@@ -80,7 +80,7 @@ describe("Order repository test", () => {
     });
   });
 
-  it("should throw an error when update an orders", async () => {
+  it("should update an order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("c1", "Customer 1");
     customer.changeAddress(new Address(
@@ -92,17 +92,31 @@ describe("Order repository test", () => {
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
-    const product = new Product("p1", "Product 1", 100);
-    await productRepository.create(product);
+    const product1 = new Product("p1", "Product 1", 100);
+    await productRepository.create(product1);
 
     const orderRepository = new OrderRepository();
-    const orderItem = new OrderItem("i1", product.name, 1, product.price, product.id);
-    const order = new Order("o1", customer.id, [orderItem]);
+    const orderItem1 = new OrderItem("i1", product1.name, 1, product1.price, product1.id);
+    const order = new Order("o1", customer.id, [orderItem1]);
     await orderRepository.create(order);
 
-    expect(async () => {
-      await orderRepository.update(order);
-    }).rejects.toThrow("Not implemented");
+    const customer2 = new Customer("c2", "Customer 2");
+    customer2.changeAddress(new Address(
+      "A st.",
+      1,
+      "60000-000",
+      "Fortaleza",
+    ));
+    await customerRepository.create(customer2);
+
+    order.changeCustomer(customer2.id);
+
+    await orderRepository.update(order);
+    
+    const foundOrder = await orderRepository.find("o1");
+    
+    expect(foundOrder.customerID).toBe(customer2.id);
+    
   });
 
   it("should find an order", async () => {
