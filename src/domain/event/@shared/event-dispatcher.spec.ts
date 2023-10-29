@@ -49,7 +49,7 @@ describe("Domain events tests", () => {
   it("should notify all events handler", () => {
     const eventDispatcher = new EventDispatcher();
     const eventHandler = new SendEmailWhenProductIsCreatedHandler();
-    const spyEventHanler = jest.spyOn(eventHandler, "handle");
+    const spyEventHandler = jest.spyOn(eventHandler, "handle");
 
     eventDispatcher.register("ProductCreatedEvent", eventHandler);
 
@@ -65,7 +65,7 @@ describe("Domain events tests", () => {
 
     eventDispatcher.notify(productCreatedEvent);
 
-    expect(spyEventHanler).toHaveBeenCalled();
+    expect(spyEventHandler).toHaveBeenCalled();
   });
 
 });
