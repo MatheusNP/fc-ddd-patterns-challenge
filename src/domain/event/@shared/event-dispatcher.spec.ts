@@ -1,4 +1,4 @@
-import SendEmailWhenProductIsCreatedHandler from "../product/handler/send-email-whe-product-is-created";
+import SendEmailWhenProductIsCreatedHandler from "../product/handler/send-email-when-product-is-created";
 import ProductCreatedEvent from "../product/product-created.event";
 import EventDispatcher from "./event-dispatcher";
 

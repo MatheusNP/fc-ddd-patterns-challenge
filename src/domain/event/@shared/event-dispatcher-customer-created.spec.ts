@@ -3,7 +3,7 @@ import EnviaConsoleLog2Handler from "../customer/handler/envia-console-log-2";
 import CustomerCreatedEvent from "../customer/customer-created.event";
 import EventDispatcher from "./event-dispatcher";
 
-describe("Customer domain events tests", () => {
+describe("Customer created domain events tests", () => {
 
   it("should register an event handler", () => {
     const eventDispatcher = new EventDispatcher();
