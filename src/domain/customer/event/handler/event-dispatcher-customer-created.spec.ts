@@ -1,7 +1,7 @@
-import EnviaConsoleLog1Handler from "../customer/handler/envia-console-log-1";
-import EnviaConsoleLog2Handler from "../customer/handler/envia-console-log-2";
-import CustomerCreatedEvent from "../customer/customer-created.event";
-import EventDispatcher from "./event-dispatcher";
+import EventDispatcher from "../../../@shared/event/event-dispatcher";
+import CustomerCreatedEvent from "../customer-created.event";
+import EnviaConsoleLog1Handler from "./envia-console-log-1";
+import EnviaConsoleLog2Handler from "./envia-console-log-2";
 
 describe("Customer created domain events tests", () => {
 

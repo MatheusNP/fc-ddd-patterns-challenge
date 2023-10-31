@@ -1,6 +1,6 @@
-import EnviaConsoleLogHandler from "../customer/handler/envia-console-log";
-import CustomerAddressChangedEvent from "../customer/customer-address-changed.event";
-import EventDispatcher from "./event-dispatcher";
+import EventDispatcher from "../../../@shared/event/event-dispatcher";
+import CustomerAddressChangedEvent from "../customer-address-changed.event";
+import EnviaConsoleLogHandler from "./envia-console-log";
 
 describe("Customer address changed domain events tests", () => {
 
