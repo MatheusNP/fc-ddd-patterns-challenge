@@ -40,4 +40,35 @@ describe('Unit tests for notifications', () => {
       'customer: error message, customer: error message2, order: error message3'
     );
   });
+
+  it('should check if notification has at least one error', () => {
+    const notification = new Notification();
+    const error = {
+      message: 'error message',
+      context: 'customer',
+    };
+
+    notification.addError(error);
+
+    expect(notification.hasErrors()).toBeTruthy();
+  });
+
+  it('should get all errors', () => {
+    const notification = new Notification();
+    const error = {
+      message: 'error message',
+      context: 'customer',
+    };
+
+    notification.addError(error);
+
+    const error2 = {
+      message: 'error message2',
+      context: 'customer',
+    };
+
+    notification.addError(error2);
+
+    expect(notification.getErrors()).toEqual([error, error2]);
+  });
 });
