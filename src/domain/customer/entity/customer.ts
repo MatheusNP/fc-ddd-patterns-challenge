@@ -34,10 +34,16 @@ export default class Customer extends Entity implements CustomerInterface {
 
   validate() {
     if (this.id.length === 0) {
-      this.notification.addError({ message: 'Id is required', context: 'customer' });
+      this.notification.addError({
+        message: 'Id is required',
+        context: 'customer',
+      });
     }
     if (this._name.length === 0) {
-      this.notification.addError({ message: 'Name is required', context: 'customer' });
+      this.notification.addError({
+        message: 'Name is required',
+        context: 'customer',
+      });
     }
   }
 
